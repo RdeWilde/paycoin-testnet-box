@@ -12,7 +12,6 @@ RUN echo "### Downloading Paycoin Core"
 RUN curl -# -C - -L -k -o linux64.zip "$(curl -s https://api.github.com/repos/PaycoinFoundation/Paycoin/releases/latest | grep 'browser_' | cut -d\" -f4 | grep 'linux64.zip')"
 RUN unzip linux64.zip
 RUN rm -f -r linux64.zip
-RUN rm -f -r paycoin-qt
 
 # create a non-root user
 RUN adduser --disabled-login --gecos "" tester
