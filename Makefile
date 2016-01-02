@@ -1,6 +1,6 @@
-BITCOIND=bitcoind
-BITCOINGUI=bitcoin-qt
-BITCOINCLI=bitcoin-cli
+BITCOIND=paycoind
+BITCOINGUI=paycoin-qt
+BITCOINCLI=paycoin-cli
 B1_FLAGS=
 B2_FLAGS=
 B1=-datadir=1 $(B1_FLAGS)

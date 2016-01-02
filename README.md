@@ -1,8 +1,8 @@
-# bitcoin-testnet-box
+# paycoin-testnet-box
 
-Create your own private bitcoin testnet
+Create your own private paycoin testnet
 
-You must have `bitcoind` and `bitcoin-cli` installed on your system and in the
+You must have `paycoind` and `paycoin-cli` installed on your system and in the
 path unless running this within a [Docker](https://www.docker.com) container
 (see [below](#using-with-docker)).
 
@@ -28,7 +28,7 @@ $ make start
 
 ```
 $ make getinfo
-bitcoin-cli -datadir=1  getinfo
+paycoin-cli -datadir=1  getinfo
 {
     "version" : 90300,
     "protocolversion" : 70002,
@@ -46,7 +46,7 @@ bitcoin-cli -datadir=1  getinfo
     "relayfee" : 0.00001000,
     "errors" : ""
 }
-bitcoin-cli -datadir=2  getinfo
+paycoin-cli -datadir=2  getinfo
 {
     "version" : 90300,
     "protocolversion" : 70002,
@@ -68,8 +68,8 @@ bitcoin-cli -datadir=2  getinfo
 
 ## Generating blocks
 
-Normally on the live, real, bitcoin network, blocks are generated, on average,
-every 10 minutes. Since this testnet-in-box uses Bitcoin Core's (bitcoind)
+Normally on the live, real, paycoin network, blocks are generated, on average,
+every 10 minutes. Since this testnet-in-box uses Paycoin Core's (paycoind)
 regtest mode, we are able to generate a block on a private network
 instantly using a simple command.
 
@@ -85,15 +85,15 @@ To generate more than 1 block:
 $ make generate BLOCKS=10
 ```
 
-## Sending bitcoins
-To send bitcoins that you've generated:
+## Sending paycoins
+To send paycoins that you've generated:
 
 ```
 $ make send ADDRESS=mxwPtt399zVrR62ebkTWL4zbnV1ASdZBQr AMOUNT=10
 ```
 
-## Sending bitcoins back to node 1
-After sending bitcoins (generated on node 1) to node 2, send them
+## Sending paycoins back to node 1
+After sending paycoins (generated on node 1) to node 2, send them
 back to node 1. In order to do so you will need to get a new address
 for node 1. You can optionally specify an account on node 1 to associate
 the address with.
@@ -122,15 +122,15 @@ an isolated container.
 ### Building docker image
 
 Pull the image
-  * `docker pull freewil/bitcoin-testnet-box`
+  * `docker pull freewil/paycoin-testnet-box`
 
 or build it yourself from this directory
-  * `docker build -t bitcoin-testnet-box .`
+  * `docker build -t paycoin-testnet-box .`
 
 ### Running docker container
-The docker image will run two bitcoin nodes in the background and is meant to be
+The docker image will run two paycoin nodes in the background and is meant to be
 attached to allow you to type in commands. The image also exposes
 the two JSON-RPC ports from the nodes if you want to be able to access them
 from outside the container.
 
-* `$ docker run -t -i freewil/bitcoin-testnet-box`
+* `$ docker run -t -i freewil/paycoin-testnet-box`
