@@ -2,16 +2,17 @@
 
 # Ubuntu 14.04 LTS (Trusty Tahr)
 FROM ubuntu:14.04
-MAINTAINER Sean Lavine <lavis88@gmail.com>
+MAINTAINER Robert de Wilde <rdewildenl@gmail.com>
 
-# add paycoind from the official PPA
+# add paycoin
 RUN apt-get update
-RUN apt-get install --yes software-properties-common
-RUN add-apt-repository --yes ppa:paycoin/paycoin
-RUN apt-get update
-
-# install paycoind (from PPA) and make
-RUN apt-get install --yes paycoind make
+RUN apt-get install software-properties-common python-software-properties unzip ufw curl wget sed grep cron -y
+RUN cd ~
+RUN echo "### Downloading Paycoin Core"
+RUN curl -# -C - -L -k -o linux64.zip "$(curl -s https://api.github.com/repos/PaycoinFoundation/Paycoin/releases/latest | grep 'browser_' | cut -d\" -f4 | grep 'linux64.zip')"
+RUN unzip linux64.zip
+RUN rm -f -r linux64.zip
+RUN rm -f -r paycoin-qt
 
 # create a non-root user
 RUN adduser --disabled-login --gecos "" tester

@@ -1,6 +1,6 @@
-BITCOIND=paycoind
-BITCOINGUI=paycoin-qt
-BITCOINCLI=paycoin-cli
+PAYCOIND=paycoind
+PAYCOINGUI=paycoin-qt
+PAYCOINCLI=paycoin-cli
 B1_FLAGS=
 B2_FLAGS=
 B1=-datadir=1 $(B1_FLAGS)
@@ -11,29 +11,29 @@ AMOUNT=
 ACCOUNT=
 
 start:
-	$(BITCOIND) $(B1) -daemon
-	$(BITCOIND) $(B2) -daemon
+	$(PAYCOIND) $(B1) -daemon
+	$(PAYCOIND) $(B2) -daemon
 
 start-gui:
-	$(BITCOINGUI) $(B1) &
-	$(BITCOINGUI) $(B2) &
+	$(PAYCOINGUI) $(B1) &
+	$(PAYCOINGUI) $(B2) &
 
 generate:
-	$(BITCOINCLI) $(B1) generate $(BLOCKS)
+	$(PAYCOINCLI) $(B1) generate $(BLOCKS)
 
 getinfo:
-	$(BITCOINCLI) $(B1) getinfo
-	$(BITCOINCLI) $(B2) getinfo
+	$(PAYCOINCLI) $(B1) getinfo
+	$(PAYCOINCLI) $(B2) getinfo
 
 send:
-	$(BITCOINCLI) $(B1) sendtoaddress $(ADDRESS) $(AMOUNT)
+	$(PAYCOINCLI) $(B1) sendtoaddress $(ADDRESS) $(AMOUNT)
 
 address:
-	$(BITCOINCLI) $(B1) getnewaddress $(ACCOUNT)
+	$(PAYCOINCLI) $(B1) getnewaddress $(ACCOUNT)
 
 stop:
-	$(BITCOINCLI) $(B1) stop
-	$(BITCOINCLI) $(B2) stop
+	$(PAYCOINCLI) $(B1) stop
+	$(PAYCOINCLI) $(B2) stop
 
 clean:
 	find 1/regtest/* -not -name 'server.*' -delete
