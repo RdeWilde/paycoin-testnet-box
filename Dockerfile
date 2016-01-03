@@ -1,7 +1,7 @@
 # paycoin-testnet-box docker image
 
 # Ubuntu 14.04 LTS (Trusty Tahr)
-FROM ubuntu:14.04
+FROM ubuntu:15.04
 MAINTAINER Robert de Wilde <rdewildenl@gmail.com>
 
 # add paycoin
