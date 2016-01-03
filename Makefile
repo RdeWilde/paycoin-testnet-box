@@ -36,5 +36,5 @@ stop:
 	$(PAYCOINCLI) $(B2) stop
 
 clean:
-	find 1/regtest/* -not -name 'server.*' -delete
-	find 2/regtest/* -not -name 'server.*' -delete
+	find 1/* -not -name 'server.*' -not -name 'paycoin.conf' -delete
+	find 2/* -not -name 'server.*' -not -name 'paycoin.conf' -delete
