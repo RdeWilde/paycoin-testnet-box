@@ -1,6 +1,5 @@
 PAYCOIND=paycoind
 PAYCOINGUI=paycoin-qt
-PAYCOINCLI=paycoin-cli
 B1_FLAGS=
 B2_FLAGS=
 B1=-datadir=1 $(B1_FLAGS)
@@ -15,25 +14,25 @@ start:
 	$(PAYCOIND) $(B2) -daemon
 
 start-gui:
-	$(PAYCOINGUI) $(B1) &
-	$(PAYCOINGUI) $(B2) &
+	$(PAYCOIND) $(B1) &
+	$(PAYCOIND) $(B2) &
 
 generate:
-	$(PAYCOINCLI) $(B1) generate $(BLOCKS)
+	$(PAYCOIND) $(B1) generate $(BLOCKS)
 
 getinfo:
-	$(PAYCOINCLI) $(B1) getinfo
-	$(PAYCOINCLI) $(B2) getinfo
+	$(PAYCOIND) $(B1) getinfo
+	$(PAYCOIND) $(B2) getinfo
 
 send:
-	$(PAYCOINCLI) $(B1) sendtoaddress $(ADDRESS) $(AMOUNT)
+	$(PAYCOIND) $(B1) sendtoaddress $(ADDRESS) $(AMOUNT)
 
 address:
-	$(PAYCOINCLI) $(B1) getnewaddress $(ACCOUNT)
+	$(PAYCOIND) $(B1) getnewaddress $(ACCOUNT)
 
 stop:
-	$(PAYCOINCLI) $(B1) stop
-	$(PAYCOINCLI) $(B2) stop
+	$(PAYCOIND) $(B1) stop
+	$(PAYCOIND) $(B2) stop
 
 clean:
 	find 1/* -not -name 'server.*' -not -name 'paycoin.conf' -delete
